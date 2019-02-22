@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+	<!--扫描指定的包 
+		这里只是指定了自动扫描时的包名，在定义bean时，依然要使用完整的包名
+	 -->
+	<context:component-scan base-package="valiant.aop.springaop"/>
+	
+	<bean id = "greetingProxy" class = 
+	"org.springframework.aop.framework.ProxyFactoryBean">
+		<!--需要代理的接口  -->
+		<property name = "interfaces" value = "valiant.aop.Greeting"/>
+		<!--接口实现类  -->
+		<property name = "target" ref = "greetingImp"/>
+		<!--拦截器名称，也就是增强类名称，Spring  Bean的id  -->
+		<property name = "interceptorNames">
+			<list>
+				<!-- <ref>greetingSurroundAdvice</ref>  -->
+				<value>greetingSurroundAdvice</value>
+				<value>greetingThrowAdvice</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id = "greetingApologyProxy" class = 
+	"org.springframework.aop.framework.ProxyFactoryBean">
+		<!--需要代理的接口  -->
+		<property name = "interfaces" value = "valiant.aop.Apology"/>
+		<!--目标类  -->
+		<property name = "target" ref = "greetingImp"/>
+		<!--引入增强  -->
+		<property name = "interceptorNames" value = "greetingIntroAdvice"/>
+		<!--代理目标类（默认为false，仅代理接口）  
+			代理接口：Spring就用JDK动态代理
+			代理目标列：Spring就用CGLib动态代理
+		-->
+		<property name = "proxyTargetClass" value = "true"/>
+	</bean>
+	<!--配置一个切面  -->
+	<bean id = "greetingAdvisor" class = "org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+		<!--指定增强  -->
+		<property name = "advice" ref = "greetingSurroundAdvice"/>
+		<!--正则表示式指定的切点  -->
+		<property name = "pattern" value = "valiant.aop.springaop.GreetingImp.good.*"/>
+	</bean>
+	<!--配置一个代理  -->
+	<bean id = "greetingProxyWithAdvisor" class = "org.springframework.aop.framework.ProxyFactoryBean">
+		<!--目标类  -->
+		<property name = "target" ref = "greetingImp"/>
+		<!--引入增强，这里使用的是一个切面类   -->
+		<property name = "interceptorNames" value = "greetingAdvisor"/>
+		<!--指定可以代理目标类  -->
+		<property name = "proxyTargetClass" value = "true"/> 
+	</bean>
+</beans>
