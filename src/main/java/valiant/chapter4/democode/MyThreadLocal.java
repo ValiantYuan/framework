@@ -4,8 +4,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.springframework.ui.context.Theme;
-
 /**
  * 自己实现的ThreadLocal
  * @author yuanq5

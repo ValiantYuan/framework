@@ -1,7 +1,5 @@
 package valiant.aop.staticproxy;
 
-import javax.swing.plaf.synth.SynthStyle;
-
 import valiant.aop.Hello;
 
 public class HelloImpl implements Hello {

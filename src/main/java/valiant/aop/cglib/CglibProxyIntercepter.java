@@ -20,6 +20,7 @@ public class CglibProxyIntercepter implements MethodInterceptor {
 		// TODO Auto-generated method stub
 		System.out.println("执行前...");
 		Object result = methodProxy.invokeSuper(sub, args);
+//		Object result = methodProxy.invoke(sub, args);
 		System.out.println("执行后...");
 		return result;
 	}

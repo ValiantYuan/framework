@@ -1,7 +1,5 @@
 package valiant.util;
 
-import static org.hamcrest.CoreMatchers.both;
-
 public class CastUtil {
 	
 	public static String castString(Object obj) {

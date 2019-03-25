@@ -9,7 +9,6 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.RequestAttribute;
 
 /**
  * Servlet助手类，为Action方法，提供线程安全的HttpRequestServlet和HttpResponseServlet操作

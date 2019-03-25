@@ -4,8 +4,6 @@ import java.lang.annotation.Annotation;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.junit.runners.model.Annotatable;
-
 import valiant.framework.annotation.Controller;
 import valiant.framework.annotation.Service;
 import valiant.util.ClassUtil;

@@ -3,8 +3,6 @@
  */
 package valiant.framework.proxy;
 
-import static org.hamcrest.CoreMatchers.endsWith;
-
 import java.lang.reflect.Method;
 
 import org.slf4j.Logger;

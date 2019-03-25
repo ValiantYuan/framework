@@ -1,9 +1,6 @@
 package valiant.aop.cglib;
 
 import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
-
-import javax.management.InstanceAlreadyExistsException;
 
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;

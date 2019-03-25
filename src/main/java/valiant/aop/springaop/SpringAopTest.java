@@ -2,7 +2,6 @@ package valiant.aop.springaop;
 
 import org.springframework.aop.framework.ProxyFactory;
 
-import valiant.aop.Apology;
 import valiant.aop.Greeting;
 
 public class SpringAopTest {
